@@ -56,7 +56,7 @@ console.log(averageRate);
 
 // Question 5
 function SingleFreelancer(freelancer) {
-  const div = document.createElement("div");
+  const FLdiv = document.createElement("div");
 
   const textName = document.createElement("h2");
   textName.innerText = freelancer.name;
@@ -66,4 +66,22 @@ function SingleFreelancer(freelancer) {
 
   const textRate = document.createElement("h2");
   textRate.innerText = freelancer.rate;
+
+  FLdiv.appendChild(textName);
+  FLdiv.appendChild(textOccupation);
+  FLdiv.appendChild(textRate);
+
+  return FLdiv;
 }
+
+function render() {
+  const $app = document.querySelector("#app");
+  $app.innerHTML = `
+    <h1>Freelancers For Fun</h1>
+    <SingleFreelancer></SingleFreelancer>
+  `;
+  $app
+    .querySelector("SingleFreelancer")
+    .replaceWith(SingleFreelancer(availableFreelancers[0]));
+}
+render();
